@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <list.hh>
+#include <queue.hh>
 #include <stack.hh>
 
 TEST(ListTest, pushFront) {
@@ -113,6 +114,18 @@ TEST(StackTest, pushAndPop) {
   GTEST_ASSERT_EQ(stack.pop(), 3);
   GTEST_ASSERT_EQ(stack.pop(), 2);
   GTEST_ASSERT_EQ(stack.pop(), 1);
+}
+
+TEST(QueueTest, enqueueAndDequeue) {
+  Queue<int> queue;
+
+  queue.enqueue(1);
+  queue.enqueue(2);
+  queue.enqueue(3);
+
+  GTEST_ASSERT_EQ(queue.dequeue(), 1);
+  GTEST_ASSERT_EQ(queue.dequeue(), 2);
+  GTEST_ASSERT_EQ(queue.dequeue(), 3);
 }
 
 int main(int argc, char* argv[]) {
