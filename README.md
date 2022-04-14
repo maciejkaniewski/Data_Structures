@@ -1,6 +1,6 @@
 # Data Structures
 
-Data Structures is a project I realized in the fourth semester of my studies within the Design of Algorithms and Artificial Intelligence Methods course at the Wroclaw University of Technology in the field of Control Engineering and Robotics. The main goal of this task was to implement a bidirectional linked list. Then, using the created list, we had to create such structures as stack, queue and priority queue. Additionally, unit tests had to be carried out to verify the correct implementation of the previously mentioned data structures. I used the `GoogleTest` framework to conduct unit tests.
+Data Structures is a project I realized in the fourth semester of my studies within the Design of Algorithms and Artificial Intelligence Methods course at the Wroclaw University of Technology in the field of Control Engineering and Robotics. The main goal of this task was to implement a bidirectional linked list. Then, using the created list, we had to create such structures as stack, queue and priority queue. Additionally, unit tests had to be carried out to verify the correct implementation of the previously mentioned data structures. I used the `GoogleTest` framework to conduct unit tests and `Valgrind` tool to detect memory leaks.
 
 ## Table of Contents
 
@@ -101,8 +101,25 @@ The compiled program performs tests on the implemented data structures and displ
 
 Current tests can be changed, extended. You can add new test conditions. All tests are defined in the `test_data_structures.cpp` file.
 
+### Valgrind Output
+
+    valgrind --tool=memcheck --leak-check=yes --track-origins=yes ./Test_Data_Structures
+    ==88260== Memcheck, a memory error detector
+    ==88260== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+    ==88260== Using Valgrind-3.15.0 and LibVEX; rerun with -h for copyright info
+    ==88260== Command: ./Test_Data_Structures
+    ==88260== HEAP SUMMARY:
+    ==88260==     in use at exit: 0 bytes in 0 blocks
+    ==88260==   total heap usage: 395 allocs, 395 frees, 133,392 bytes allocated
+    ==88260== 
+    ==88260== All heap blocks were freed -- no leaks are possible
+    ==88260== 
+    ==88260== For lists of detected and suppressed errors, rerun with: -s
+    ==88260== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+
 
 ## Concepts I Learned
 
 - Creating own data structures,
+- Using `Valgrind` to detect memory leaks,
 - Performing tests using the `GoogleTest` framework.
