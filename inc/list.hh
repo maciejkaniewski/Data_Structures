@@ -238,7 +238,7 @@ class List {
   void remove(const T &element);
   
   /**
-   * @brief Remove all elements
+   * @brief Remove all occurrences of specified element
    * 
    * @param element 
    */
