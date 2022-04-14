@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <list.hh>
+#include <priority_queue.hh>
 #include <queue.hh>
 #include <stack.hh>
 
@@ -125,6 +126,18 @@ TEST(QueueTest, enqueueAndDequeue) {
 
   GTEST_ASSERT_EQ(queue.dequeue(), 1);
   GTEST_ASSERT_EQ(queue.dequeue(), 2);
+  GTEST_ASSERT_EQ(queue.dequeue(), 3);
+}
+
+TEST(PriorityQueueTest, enqueueAndDequeue) {
+  PriorityQueue<int> queue;
+
+  queue.enqueue(1, 20);
+  queue.enqueue(3, 5);
+  queue.enqueue(2, 30);
+
+  GTEST_ASSERT_EQ(queue.dequeue(), 2);
+  GTEST_ASSERT_EQ(queue.dequeue(), 1);
   GTEST_ASSERT_EQ(queue.dequeue(), 3);
 }
 
