@@ -36,7 +36,7 @@ class PriorityQueue {
 
   struct PriorityData {
     T data;
-    int priority;
+    int priority; // Higer number = higher priority
 
     bool operator==(const PriorityData &other) const;
   };
