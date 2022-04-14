@@ -2,6 +2,7 @@
 
 #include <algorithm>
 #include <list.hh>
+#include <stack.hh>
 
 TEST(ListTest, pushFront) {
   List<int> list;
@@ -100,6 +101,19 @@ TEST(ListTest, ConstIterator) {
   for (auto it = list.constBegin(); it != list.constEnd(); ++it) {
     GTEST_ASSERT_EQ(*it, refArray[index++]);
   }
+}
+
+TEST(StackTest, pushAndPop)
+{
+    Stack<int> stack;
+
+    stack.push(1);
+    stack.push(2);
+    stack.push(3);
+
+    GTEST_ASSERT_EQ(stack.pop(),3);
+    GTEST_ASSERT_EQ(stack.pop(),2);
+    GTEST_ASSERT_EQ(stack.pop(),1);
 }
 
 int main(int argc, char* argv[]) {
