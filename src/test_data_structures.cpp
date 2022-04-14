@@ -103,17 +103,16 @@ TEST(ListTest, ConstIterator) {
   }
 }
 
-TEST(StackTest, pushAndPop)
-{
-    Stack<int> stack;
+TEST(StackTest, pushAndPop) {
+  Stack<int> stack;
 
-    stack.push(1);
-    stack.push(2);
-    stack.push(3);
+  stack.push(1);
+  stack.push(2);
+  stack.push(3);
 
-    GTEST_ASSERT_EQ(stack.pop(),3);
-    GTEST_ASSERT_EQ(stack.pop(),2);
-    GTEST_ASSERT_EQ(stack.pop(),1);
+  GTEST_ASSERT_EQ(stack.pop(), 3);
+  GTEST_ASSERT_EQ(stack.pop(), 2);
+  GTEST_ASSERT_EQ(stack.pop(), 1);
 }
 
 int main(int argc, char* argv[]) {
