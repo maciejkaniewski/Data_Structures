@@ -1,9 +1,13 @@
 #ifndef LIST_HH_
 #define LIST_HH_
 
-#include <iostream>
 #include <memory>
 
+/**
+ * @brief Model a concept of bidirectional List
+ *
+ * @tparam T
+ */
 template <typename T>
 class List {
  public:
@@ -14,10 +18,22 @@ class List {
     std::shared_ptr<Node> next;
   };
 
+  /**
+   * @brief Construct a new List object
+   *
+   */
   List();
 
+  /**
+   * @brief Destroy the List object
+   *
+   */
   ~List();
 
+  /**
+   * @brief Model a concept of custom Iterator
+   *
+   */
   class Iterator {
    public:
     using difference_type = long;
@@ -26,34 +42,114 @@ class List {
     using reference = const T &;
     using iterator_category = std::random_access_iterator_tag;
 
+    /**
+     * @brief Construct a new Iterator object
+     *
+     * @param node Node object
+     */
     Iterator(std::shared_ptr<Node> node = nullptr);
 
+    /**
+     * @brief Increment Iterator
+     *
+     * @return Iterator
+     */
     Iterator operator++();
 
+    /**
+     * @brief Decrement Iterator
+     *
+     * @return Iterator
+     */
     Iterator operator--();
 
+    /**
+     *  @brief Equal Iterators
+     *
+     * @param other another Iterator object
+     * @return true Iterators are equal
+     * @return false Iterators are not equal
+     */
     bool operator==(const Iterator &other) const;
 
+    /**
+     *  @brief Not equal Iterators
+     *
+     * @param other another Iterator object
+     * @return true Iterators are not equal
+     * @return false Iterators not equal
+     */
     bool operator!=(const Iterator &other) const;
 
+    /**
+     * @brief Greater Iterator
+     *
+     * a > b
+     *
+     * @param other another Iterator object
+     * @return true  Iterator a is greater than b Iterator
+     * @return false Iterator a is less than b Iterator
+     */
     bool operator>(const Iterator &other) const;
 
+    /**
+     * @brief Less Iterator
+     *
+     * a < b
+     *
+     * @param other another Iterator object
+     * @return true  Iterator a is less than b Iterator
+     * @return false Iterator a is greater than b Iterator
+     */
     bool operator<(const Iterator &other) const;
 
+    /**
+     * @brief Subtract Iterators
+     *
+     * @param other another Iterator object
+     * @return difference_type result of subtraction
+     */
     difference_type operator-(const Iterator &other) const;
 
+    /**
+     * @brief Add diff to Iterator
+     *
+     * @param diff
+     * @return Iterator + diff
+     */
     Iterator operator+(difference_type diff) const;
 
+    /**
+     * @brief Sutract diff from Iterator
+     *
+     * @param diff
+     * @return Iterator - diff
+     */
     Iterator operator-(difference_type diff) const;
 
+    /**
+     * @brief Acces Iterator
+     *
+     * @param i
+     * @return Iterator
+     */
     Iterator operator[](std::size_t i);
 
+    /**
+     * @brief Get data from Iterator
+     *
+     * @return T&
+     */
     T &operator*();
 
    private:
     std::shared_ptr<Node> currentNode = nullptr;
   };
 
+  /**
+   * @brief Model a concept of custom const Iterator
+   *
+   */
   class ConstIterator {
    public:
     using difference_type = long;
@@ -90,30 +186,88 @@ class List {
     std::shared_ptr<Node> currentNode = nullptr;
   };
 
+  /**
+   * @brief Check if List is empty
+   *
+   * @return true List is empty
+   * @return false List is not empty
+   */
   bool isEmpty() const;
 
+  /**
+   * @brief Get the element from back of the List
+   *
+   * @return const T&
+   */
   const T &getBack() const;
 
+  /**
+   * @brief Get the element from front of the List
+   *
+   * @return const T&
+   */
   const T &getFront() const;
 
+  /**
+   * @brief Push element to the back of the List
+   *
+   * @param newElement
+   */
   void pushBack(const T &newElement);
 
+  /**
+   * @brief Push element to the front of the List
+   *
+   * @param newElement
+   */
   void pushFront(const T &newElement);
-
+  
+  /**
+   * @brief Insert element in specified position
+   * 
+   * @param newElement 
+   * @param index position
+   */
   void insert(const T &newElement, int index);
 
+  /**
+   * @brief Remove specified element
+   * 
+   * @param element 
+   */
   void remove(const T &element);
-
+  
+  /**
+   * @brief Remove all elements
+   * 
+   * @param element 
+   */
   void removeAll(const T &element);
-
+  
+  /**
+   * @brief Get Iterator from front of the List
+   * 
+   * @return Iterator 
+   */
   Iterator begin();
 
+  /**
+   * @brief  Get Iterator from back of the List
+   * 
+   * @return Iterator 
+   */
   Iterator end();
 
   ConstIterator constBegin() const;
 
   ConstIterator constEnd() const;
 
+  /**
+   * @brief Get element from the specified index
+   * 
+   * @param index 
+   * @return T& 
+   */
   T &operator[](int index);
 
  private:
