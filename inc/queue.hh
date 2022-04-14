@@ -14,14 +14,14 @@ class Queue {
   List<T> queue;
   
   /**
-   * @brief Add new element to queue
+   * @brief Add new element to the Queue
    * 
    * @param newElement 
    */
   void enqueue(const T &newElement);
   
   /**
-   * @brief Remove element from queue
+   * @brief Remove element from the Queue
    * 
    * @return T 
    */
